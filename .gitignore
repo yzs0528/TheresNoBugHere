@@ -323,3 +323,4 @@ RELEASE_MSG
 .vsconfig
 .idea/*
 /TheresNoBugHere/.vs
+/TheresNoBugHere/.idea
