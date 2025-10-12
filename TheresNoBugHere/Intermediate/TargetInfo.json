@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "TheresNoBugHere",
+			"Path": "..\\Source\\TheresNoBugHere.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "TheresNoBugHereEditor",
+			"Path": "..\\Source\\TheresNoBugHereEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
