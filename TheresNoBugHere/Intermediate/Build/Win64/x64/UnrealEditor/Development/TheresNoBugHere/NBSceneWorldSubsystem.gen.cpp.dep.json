@@ -1,0 +1,20 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\unrealeditor\\inc\\theresnobughere\\uht\\nbsceneworldsubsystem.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\x64\\theresnobughereeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\theresnobughere\\definitions.theresnobughere.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\source\\theresnobughere\\public\\system\\nbsceneworldsubsystem.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\source\\theresnobughere\\public\\config\\nbcamerasettings.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\source\\runtime\\gameplaytags\\classes\\gameplaytagcontainer.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\source\\runtime\\core\\public\\misc\\comparisonutility.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\gameplaytags\\uht\\gameplaytagcontainer.generated.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\unrealeditor\\inc\\theresnobughere\\uht\\nbcamerasettings.generated.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\unrealeditor\\inc\\theresnobughere\\uht\\nbsceneworldsubsystem.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

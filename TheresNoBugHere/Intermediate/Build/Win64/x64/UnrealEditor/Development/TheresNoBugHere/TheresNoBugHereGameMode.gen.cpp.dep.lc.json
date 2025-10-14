@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\unrealeditor\\inc\\theresnobughere\\uht\\theresnobugheregamemode.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\x64\\theresnobughereeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\theresnobughere\\definitions.theresnobughere.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\source\\theresnobughere\\theresnobugheregamemode.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "i:\\unreal\\engine\\5.5.4\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\unrealeditor\\inc\\theresnobughere\\uht\\theresnobugheregamemode.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

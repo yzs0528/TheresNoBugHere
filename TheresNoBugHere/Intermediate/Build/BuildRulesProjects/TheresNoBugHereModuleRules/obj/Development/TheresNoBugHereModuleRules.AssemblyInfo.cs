@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TheresNoBugHereModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e72275b426cd8e53181ecee4fff695c97d1ccbe3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+463eaeeb1a9ff6d3132d3de8c0c2c8d3f532fa95")]
 [assembly: System.Reflection.AssemblyProductAttribute("TheresNoBugHereModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TheresNoBugHereModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

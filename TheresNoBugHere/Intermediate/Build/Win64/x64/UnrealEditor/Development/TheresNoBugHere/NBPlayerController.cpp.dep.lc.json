@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\source\\theresnobughere\\private\\system\\nbplayercontroller.cpp",
+        "ProvidedModule": "",
+        "PCH": "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\x64\\theresnobughereeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\theresnobughere\\definitions.theresnobughere.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\source\\theresnobughere\\public\\system\\nbplayercontroller.h",
+            "i:\\unreal\\projects\\theresnobughere\\theresnobughere\\theresnobughere\\intermediate\\build\\win64\\unrealeditor\\inc\\theresnobughere\\uht\\nbplayercontroller.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

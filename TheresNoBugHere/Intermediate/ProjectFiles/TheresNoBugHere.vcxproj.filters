@@ -54,5 +54,65 @@
     <ClCompile Include="..\..\Source\TheresNoBugHere\TheresNoBugHereGameMode.h">
       <Filter>Source\TheresNoBugHere</Filter>
     </ClCompile>
+    <Filter Include="Source\TheresNoBugHere\Private">
+      <UniqueIdentifier>{8F14586B-7581-30CD-BBD9-63390E1B4C9E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\TheresNoBugHere\Private\Component">
+      <UniqueIdentifier>{472A6730-9F1D-3A49-B0EA-69F648CA7E01}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Private\Component\NBPawnMovement.cpp">
+      <Filter>Source\TheresNoBugHere\Private\Component</Filter>
+    </ClCompile>
+    <Filter Include="Source\TheresNoBugHere\Private\Config">
+      <UniqueIdentifier>{446348CA-E0A9-3504-BB06-A50362F77385}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Private\Config\NBCameraSettings.cpp">
+      <Filter>Source\TheresNoBugHere\Private\Config</Filter>
+    </ClCompile>
+    <Filter Include="Source\TheresNoBugHere\Private\System">
+      <UniqueIdentifier>{5449FBCD-ECCD-3EAD-9287-6D3CD2772EC3}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Private\System\NBGameInstance.cpp">
+      <Filter>Source\TheresNoBugHere\Private\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Private\System\NBPlayerCameraManager.cpp">
+      <Filter>Source\TheresNoBugHere\Private\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Private\System\NBPlayerController.cpp">
+      <Filter>Source\TheresNoBugHere\Private\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Private\System\NBSceneWorldSubsystem.cpp">
+      <Filter>Source\TheresNoBugHere\Private\System</Filter>
+    </ClCompile>
+    <Filter Include="Source\TheresNoBugHere\Public">
+      <UniqueIdentifier>{0045487D-5DDA-383C-B7C9-232A835C56CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\TheresNoBugHere\Public\Component">
+      <UniqueIdentifier>{FD9A44D5-509F-36C9-9D73-D01BE1D7222B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Public\Component\NBPawnMovement.h">
+      <Filter>Source\TheresNoBugHere\Public\Component</Filter>
+    </ClCompile>
+    <Filter Include="Source\TheresNoBugHere\Public\Config">
+      <UniqueIdentifier>{E9CA0CBC-E35B-3B0D-A0C9-3ACACD9DDD73}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Public\Config\NBCameraSettings.h">
+      <Filter>Source\TheresNoBugHere\Public\Config</Filter>
+    </ClCompile>
+    <Filter Include="Source\TheresNoBugHere\Public\System">
+      <UniqueIdentifier>{94CC9BF9-EFA0-34E9-AF64-00A27CD0659A}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Public\System\NBGameInstance.h">
+      <Filter>Source\TheresNoBugHere\Public\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Public\System\NBPlayerCameraManager.h">
+      <Filter>Source\TheresNoBugHere\Public\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Public\System\NBPlayerController.h">
+      <Filter>Source\TheresNoBugHere\Public\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TheresNoBugHere\Public\System\NBSceneWorldSubsystem.h">
+      <Filter>Source\TheresNoBugHere\Public\System</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
