@@ -1,0 +1,1 @@
+E:\UnrealEngin\UE_5.5\Engine\Build\BatchFiles\Build.bat TheresNoBugHereEditor Win64 Development E:\Projects\TheresNoBugHere\TheresNoBugHere.uproject -WaitMutex -clean

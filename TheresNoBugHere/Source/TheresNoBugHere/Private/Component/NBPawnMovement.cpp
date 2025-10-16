@@ -3,12 +3,16 @@
 
 #include "Component/NBPawnMovement.h"
 
-#include "Kismet/GameplayStatics.h"
+#include "System/NBSceneWorldSubsystem.h"
 
 void UNBPawnMovement::TickComponent(float DeltaTime, enum ELevelTick TickType,
                                     FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	
+	const UNBSceneWorldSubsystem* SceneSubSystem = GetWorld()->GetSubsystem<UNBSceneWorldSubsystem>();
+	if (SceneSubSystem)
+	{
+		
+	}
 }
