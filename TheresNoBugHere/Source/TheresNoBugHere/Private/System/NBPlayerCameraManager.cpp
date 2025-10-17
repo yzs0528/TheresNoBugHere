@@ -4,6 +4,7 @@
 #include "System/NBPlayerCameraManager.h"
 
 #include "Config/NBCameraSettings.h"
+#include "System/NBSceneWorldSubsystem.h"
 
 void ANBPlayerCameraManager::BeginPlay()
 {
@@ -33,6 +34,11 @@ void ANBPlayerCameraManager::UpdateViewTargetInternal(FTViewTarget& OutVT, float
 	const FVector& PawnLocation = ControlledPawn->GetActorLocation();
 	OutVT.POV.Location = PawnLocation + FVector(CameraSettings->CameraLength, 0.f, 0.f);
 	OutVT.POV.Rotation = FRotator::ZeroRotator;
+
+	if (const UNBSceneWorldSubsystem* SceneSubSystem = GetWorld()->GetSubsystem<UNBSceneWorldSubsystem>())
+	{
+		OutVT.POV.Location = SceneSubSystem->TryCameraLimit(OutVT.POV.Location);
+	}
 }
 
 void ANBPlayerCameraManager::OnProcess(APawn* InPawn)

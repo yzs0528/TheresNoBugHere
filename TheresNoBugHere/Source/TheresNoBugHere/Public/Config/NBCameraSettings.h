@@ -10,20 +10,7 @@
 /**
  * 
  */
-USTRUCT(BlueprintType)
-struct FNBMapData
-{
-	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName LevelName;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D CameraLimit;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D MovementLimit;
-};
 
 UCLASS(BlueprintType, config = Game, defaultconfig)
 class THERESNOBUGHERE_API UNBCameraSettings : public UDeveloperSettings
@@ -33,15 +20,4 @@ class THERESNOBUGHERE_API UNBCameraSettings : public UDeveloperSettings
 public:
 	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
 	float CameraLength = 50000.f;
-};
-
-
-UCLASS(BlueprintType, config = Game, defaultconfig)
-class THERESNOBUGHERE_API UNBSceneSettings : public UDeveloperSettings
-{
-	GENERATED_BODY()
-
-public:
-	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
-	TMap<FGameplayTag, FNBMapData> MapData;
 };

@@ -3,7 +3,6 @@
 
 #include "System/NBSceneWorldSubsystem.h"
 
-#include "Config/NBCameraSettings.h"
 #include "Kismet/GameplayStatics.h"
 #include "System/NBGameInstance.h"
 
@@ -17,10 +16,29 @@ bool UNBSceneWorldSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 void UNBSceneWorldSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+}
 
-	UNBGameInstance* GameInstance = Cast<UNBGameInstance>(UGameplayStatics::GetGameInstance(this));
-	if (GameInstance)
+void UNBSceneWorldSubsystem::RegisterMapData(ANBMapDataActor* InMapDataActor)
+{
+	MapDataActor = InMapDataActor;
+}
+
+FVector UNBSceneWorldSubsystem::TryWorldLimit(const FVector& InLocation) const
+{
+	if (MapDataActor)
 	{
-		 GameInstance->GetCurrentMapData(CurrentMapData);
+		return MapDataActor->TryWorldLimit(InLocation);
 	}
+
+	return InLocation;
+}
+
+FVector UNBSceneWorldSubsystem::TryCameraLimit(const FVector& InLocation) const
+{
+	if (MapDataActor)
+	{
+		return MapDataActor->TryCameraLimit(InLocation);
+	}
+
+	return InLocation;
 }

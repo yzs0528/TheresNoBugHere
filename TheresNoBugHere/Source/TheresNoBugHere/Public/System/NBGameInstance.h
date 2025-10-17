@@ -19,10 +19,4 @@ class THERESNOBUGHERE_API UNBGameInstance : public UGameInstance
 
 public:
 	virtual void Init() override;
-
-	void OpenLevelByTag(FGameplayTag InMapTag);
-	void GetCurrentMapData(FNBMapData& OutMapData);
-
-public:
-	FGameplayTag CurrentMapTag;
 };

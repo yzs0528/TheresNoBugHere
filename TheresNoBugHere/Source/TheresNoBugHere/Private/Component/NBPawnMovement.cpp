@@ -10,9 +10,22 @@ void UNBPawnMovement::TickComponent(float DeltaTime, enum ELevelTick TickType,
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	const UNBSceneWorldSubsystem* SceneSubSystem = GetWorld()->GetSubsystem<UNBSceneWorldSubsystem>();
-	if (SceneSubSystem)
+	if (UpdatedComponent)
 	{
-		
+		if (const UNBSceneWorldSubsystem* SceneSubSystem = GetWorld()->GetSubsystem<UNBSceneWorldSubsystem>())
+		{
+			UpdatedComponent->SetWorldLocation(SceneSubSystem->TryWorldLimit(UpdatedComponent->GetComponentLocation()));
+		}
 	}
+}
+
+bool UNBPawnMovement::MoveUpdatedComponentImpl(const FVector& Delta, const FQuat& NewRotation, bool bSweep,
+	FHitResult* OutHit, ETeleportType Teleport)
+{
+	if (Super::MoveUpdatedComponentImpl(Delta, NewRotation, bSweep, OutHit, Teleport))
+	{
+		return true;
+	}
+
+	return false;
 }

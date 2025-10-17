@@ -9,11 +9,12 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(ClassGroup = Movement, meta = (BlueprintSpawnableComponent))
 class THERESNOBUGHERE_API UNBPawnMovement : public UFloatingPawnMovement
 {
 	GENERATED_BODY()
 
 public:
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	virtual bool MoveUpdatedComponentImpl(const FVector& Delta, const FQuat& NewRotation, bool bSweep, FHitResult* OutHit, ETeleportType Teleport) override;
 };

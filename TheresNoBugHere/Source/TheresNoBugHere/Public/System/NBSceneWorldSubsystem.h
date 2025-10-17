@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Config/NBCameraSettings.h"
+#include "Actor/NBMapDataActor.h"
 #include "Subsystems/WorldSubsystem.h"
 #include "NBSceneWorldSubsystem.generated.h"
 
@@ -19,7 +19,16 @@ class THERESNOBUGHERE_API UNBSceneWorldSubsystem : public UWorldSubsystem
 public:
 	virtual bool ShouldCreateSubsystem(UObject* Outer) const override;
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	
+	void RegisterMapData(ANBMapDataActor* InMapDataActor);
 
+	UFUNCTION(Blueprintable)
+	FVector TryWorldLimit(const FVector& InLocation) const;
+
+	UFUNCTION(Blueprintable)
+	FVector TryCameraLimit(const FVector& InLocation) const;
+	
 public:
-	FNBMapData CurrentMapData;
+	UPROPERTY()
+	TObjectPtr<ANBMapDataActor> MapDataActor;
 };
