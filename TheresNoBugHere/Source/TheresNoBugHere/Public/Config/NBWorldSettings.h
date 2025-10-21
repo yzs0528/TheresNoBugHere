@@ -17,4 +17,15 @@ class THERESNOBUGHERE_API UNBSceneSettings : public UDeveloperSettings
 
 public:
 
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "MapSettings")
+	float MapCellLength = 30.f;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "MapSettings")
+	TArray<TEnumAsByte<EObjectTypeQuery>> BlockTraceObjectTypes;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "MapSettings")
+	FString MapNavigationDataDir;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "AI")
+	TSubclassOf<ACharacter> AIClass;
 };
