@@ -239,6 +239,7 @@ void ANBMapDataActor::GeneralDefaultMapData()
 bool ANBMapDataActor::GetNavPointsByLocation(const FVector& StartLocation, const FVector& EndLocation,
 	TArray<FVector>& OutPathPoints)
 {
+	
 	return false;
 }
 

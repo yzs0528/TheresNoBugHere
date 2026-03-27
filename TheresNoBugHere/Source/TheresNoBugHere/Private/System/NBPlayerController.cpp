@@ -2,9 +2,11 @@
 
 #include "System/NBPlayerController.h"
 
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "Kismet/GameplayStatics.h"
+#include "GamePlayTags/NBTags.h"
 #include "System/NBPlayerCameraManager.h"
 
 void ANBPlayerController::OnPossess(APawn* InPawn)
@@ -21,37 +23,77 @@ void ANBPlayerController::OnPossess(APawn* InPawn)
 void ANBPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-	
-	UEnhancedInputLocalPlayerSubsystem* EnhancedInputLocalPlayerSubsystem  = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	if (EnhancedInputLocalPlayerSubsystem && MappingContext)
+
+	if (UEnhancedInputLocalPlayerSubsystem* EnhancedInputLocalPlayerSubsystem  = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
-		EnhancedInputLocalPlayerSubsystem->AddMappingContext(MappingContext, 0);
+		for	(const auto Context : MappingContexts)
+		{
+			EnhancedInputLocalPlayerSubsystem->AddMappingContext(Context, 0);
+		}
 	}
 	
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
-		EnhancedInputComponent->BindAction(MoveRightAction, ETriggerEvent::Triggered, this, &ANBPlayerController::MoveRight);
-		EnhancedInputComponent->BindAction(MoveUpAction, ETriggerEvent::Triggered, this, &ANBPlayerController::MoveUp);
+		EnhancedInputComponent->BindAction(InputAction_Move, ETriggerEvent::Triggered, this, &ANBPlayerController::Move);
+		EnhancedInputComponent->BindAction(InputAction_Look, ETriggerEvent::Triggered, this, &ANBPlayerController::Look);
+		
+		EnhancedInputComponent->BindAction(InputAction_DefaultAttack, ETriggerEvent::Started, this, &ANBPlayerController::Action_DefaultAttack);
+		EnhancedInputComponent->BindAction(InputAction_Dash, ETriggerEvent::Started, this, &ANBPlayerController::Action_Dash);
+		EnhancedInputComponent->BindAction(InputAction_Ability01, ETriggerEvent::Started, this, &ANBPlayerController::Action_Ability01);
+		EnhancedInputComponent->BindAction(InputAction_Ability02, ETriggerEvent::Started, this, &ANBPlayerController::Action_Ability02);
 	}
 		
 }
 
-void ANBPlayerController::MoveRight(const FInputActionValue& Value)
+void ANBPlayerController::ActiveAbility(const FGameplayTag& AbilityTag) const
 {
-	if (AcknowledgedPawn)
+	if (UAbilitySystemComponent* ASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn()))
 	{
-		float InputDirection = Value.Get<float>();
-		
-		AcknowledgedPawn->AddMovementInput(FVector(0.f, 1, 0.f), InputDirection);
+		ASC->TryActivateAbilitiesByTag(AbilityTag.GetSingleTagContainer());
 	}
 }
 
-void ANBPlayerController::MoveUp(const FInputActionValue& Value)
+void ANBPlayerController::Move(const FInputActionValue& Value)
 {
 	if (AcknowledgedPawn)
 	{
-		float InputDirection = Value.Get<float>();
+		FVector2D InputDirection = Value.Get<FVector2D>();
 		
-		AcknowledgedPawn->AddMovementInput(FVector(0.f, 0.f, 1), InputDirection);
+		const FRotator Rotation = GetControlRotation();
+		const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+		// get forward vector
+		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+	
+		// get right vector 
+		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		
+		AcknowledgedPawn->AddMovementInput(ForwardDirection, InputDirection.Y);
+		AcknowledgedPawn->AddMovementInput(RightDirection, InputDirection.X);
 	}
+}
+
+void ANBPlayerController::Look(const FInputActionValue& Value)
+{
+	
+}
+
+void ANBPlayerController::Action_DefaultAttack(const FInputActionValue& Value)
+{
+	ActiveAbility(NB_Tags::Abilities::DefaultAttack);
+}
+
+void ANBPlayerController::Action_Dash(const FInputActionValue& Value)
+{
+	ActiveAbility(NB_Tags::Abilities::Dash);
+}
+
+void ANBPlayerController::Action_Ability01(const FInputActionValue& Value)
+{
+	ActiveAbility(NB_Tags::Abilities::Ability01);
+}
+
+void ANBPlayerController::Action_Ability02(const FInputActionValue& Value)
+{
+	ActiveAbility(NB_Tags::Abilities::Ability02);
 }

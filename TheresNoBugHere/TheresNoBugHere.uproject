@@ -12,6 +12,11 @@
 				"Engine",
 				"DeveloperSettings"
 			]
+		},
+		{
+			"Name": "TheresNoBugHereEditor",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "Default"
 		}
 	],
 	"Plugins": [
@@ -21,6 +26,10 @@
 			"TargetAllowList": [
 				"Editor"
 			]
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
 		}
 	]
 }

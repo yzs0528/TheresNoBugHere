@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "NBPlayerController.generated.h"
 
+struct FGameplayTag;
 class UInputAction;
 class UInputMappingContext;
 /**
@@ -22,16 +23,36 @@ public:
 	virtual void SetupInputComponent() override;
 
 public:
-	void MoveRight(const FInputActionValue& Value);
-	void MoveUp(const FInputActionValue& Value);
+	void ActiveAbility(const FGameplayTag& AbilityTag) const;
 	
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-	UInputMappingContext* MappingContext;
+	void Move(const FInputActionValue& Value);
+	void Look(const FInputActionValue& Value);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-	UInputAction* MoveRightAction;
+	void Action_DefaultAttack(const FInputActionValue& Value);
+	void Action_Dash(const FInputActionValue& Value);
+	void Action_Ability01(const FInputActionValue& Value);
+	void Action_Ability02(const FInputActionValue& Value);
+	
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|MappingContext")
+	TArray<TObjectPtr<UInputMappingContext>> MappingContexts;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-	UInputAction* MoveUpAction;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Defalut")
+	TObjectPtr<UInputAction> InputAction_Move;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Defalut")
+	TObjectPtr<UInputAction> InputAction_Look;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Ability")
+	TObjectPtr<UInputAction> InputAction_DefaultAttack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Ability")
+	TObjectPtr<UInputAction> InputAction_Dash;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Ability")
+	TObjectPtr<UInputAction> InputAction_Ability01;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Ability")
+	TObjectPtr<UInputAction> InputAction_Ability02;
 };

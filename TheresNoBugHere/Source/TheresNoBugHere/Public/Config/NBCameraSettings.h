@@ -19,5 +19,26 @@ class THERESNOBUGHERE_API UNBCameraSettings : public UDeveloperSettings
 
 public:
 	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	float CameraHorizontalAngle = 45.f;
+	
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	float CameraVerticalAngle = 45.f;
+	
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
 	float CameraLength = 50000.f;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	float CameraFollowSpeed = 10.f;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	float CameraRotateSpeed = 10.f;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	bool bEffectCameraRotateLayOnRoll = false;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	bool bEffectCameraRotateLayOnPitch = false;
+
+	UPROPERTY(Config, BlueprintReadWrite, EditAnywhere, Category = "CameraSettings")
+	bool bEffectCameraRotateLayOnYaw = false;
 };

@@ -16,7 +16,9 @@ public class TheresNoBugHere : ModuleRules
 			"InputCore", 
 			"EnhancedInput",
 			"GameplayTags", 
-			"AIModule"
+			"AIModule",
+			"GameplayAbilities",
+			"GameplayTasks"
 		});
 	}
 }

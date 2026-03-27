@@ -27,9 +27,6 @@ struct FNBMapData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector2D MovementLimitZ;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<UBehaviorTree> BehaviorAsset;
 };
 
 UENUM()
