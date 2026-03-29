@@ -17,16 +17,16 @@ struct FNBMapData
 	FName MapName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D CameraLimitY;
+	FVector2D CameraLimitY = FVector2D::ZeroVector;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D CameraLimitZ;
+	FVector2D CameraLimitZ = FVector2D::ZeroVector;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D MovementLimitY;
+	FVector2D MovementLimitY = FVector2D::ZeroVector;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D MovementLimitZ;
+	FVector2D MovementLimitZ = FVector2D::ZeroVector;
 };
 
 UENUM()
@@ -53,7 +53,7 @@ struct FDefaultMapNavigationData : public FTableRowBase
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIntPoint CellIndex;
+	FIntPoint CellIndex = FIntPoint::ZeroValue;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bHasBlocked = false;

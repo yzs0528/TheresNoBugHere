@@ -17,7 +17,7 @@ struct FNBCameraRuntimeData
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector PivotLocation;
+	FVector PivotLocation = FVector::ZeroVector;
 };
 
 UCLASS()

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "Data/NBAnimationData.h"
 #include "NBAnimInstanceBase.generated.h"
 
 /**
@@ -20,8 +21,5 @@ public:
 
 protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-	bool bInAir = false;
-
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-	bool bIsMoving = false;
+	FNBAnimData_LocalMotion LocalMotionData;
 };

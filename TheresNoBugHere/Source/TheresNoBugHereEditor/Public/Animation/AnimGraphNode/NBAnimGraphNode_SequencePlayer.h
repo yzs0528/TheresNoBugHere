@@ -14,7 +14,8 @@ UCLASS()
 class THERESNOBUGHEREEDITOR_API UNBAnimGraphNode_SequencePlayer : public UAnimGraphNode_AssetPlayerBase
 {
 	GENERATED_BODY()
-
+	
+public:
 	UPROPERTY(EditAnywhere, Category = "Settings")
 	FNBAnimNode_SequencePlayer Node;
 

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Data/NBAnimationData.h"
 #include "NBAnimManagerComponent.generated.h"
 
 
@@ -24,4 +25,13 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
+	
+public:
+	void InitAnimSetByTable(UDataTable* AnimSetTable);
+	bool ShouldUpdateAnim(const FGameplayTag& InTag, const int32 InVersion);
+	FNBRuntimeAnimSetData GetAnimSetDataByTag(const FGameplayTag& InTag);
+	
+	
+protected:
+	TMap<FGameplayTag, FNBRuntimeAnimSetData> AnimSetVersion; 
 };

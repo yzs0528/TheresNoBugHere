@@ -12,6 +12,13 @@ public class TheresNoBugHereEditor : ModuleRules
                 "Core",
                 "CoreUObject",
                 "Engine",
+                "Slate",
+                "SlateCore",
+                "TheresNoBugHere",
+                "UnrealEd",
+                "GraphEditor",
+                "AnimGraph",
+                "ToolMenus",
                 "AnimGraphRuntime",
                 "BlueprintGraph",
                 "DeveloperSettings",
@@ -21,15 +28,6 @@ public class TheresNoBugHereEditor : ModuleRules
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
-                "CoreUObject",
-                "Engine",
-                "Slate",
-                "SlateCore",
-                "TheresNoBugHere",
-                "UnrealEd",
-                "GraphEditor",
-                "AnimGraph",
-                "ToolMenus",
             }
         );
     }

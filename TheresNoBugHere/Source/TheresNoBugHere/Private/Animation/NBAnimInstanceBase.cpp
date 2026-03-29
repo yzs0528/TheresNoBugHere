@@ -18,6 +18,6 @@ void UNBAnimInstanceBase::NativeUpdateAnimation(float DeltaSeconds)
 
 	const UCharacterMovementComponent* MovementComponent = Character->GetCharacterMovement();
 
-	bInAir = MovementComponent->IsFalling();
-	bIsMoving = MovementComponent->Velocity.SizeSquared2D() > 1.f && MovementComponent->GetCurrentAcceleration().SizeSquared2D() > 1.f;
+	LocalMotionData.bInAir = MovementComponent->IsFalling();
+	LocalMotionData.bIsMoving = MovementComponent->Velocity.SizeSquared2D() > 1.f && MovementComponent->GetCurrentAcceleration().SizeSquared2D() > 1.f;
 }
