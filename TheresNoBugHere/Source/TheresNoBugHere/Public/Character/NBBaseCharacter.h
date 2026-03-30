@@ -9,6 +9,7 @@
 #include "NBBaseCharacter.generated.h"
 
 class UNBAnimManagerComponent;
+class UNBCharacterStateComponent;
 class UGameplayAbility;
 
 UCLASS()
@@ -32,6 +33,18 @@ public:
 	
 	UFUNCTION(Blueprintable, Exec)
 	void InitAvatar();
+
+	UFUNCTION(BlueprintPure)
+	UNBAnimManagerComponent* GetAnimManagerComponent() { return AnimManagerComponent; }
+
+	UFUNCTION(BlueprintPure)
+	UNBCharacterStateComponent* GetCharacterStateComponent() const { return CharacterStateComponent; }
+
+	UFUNCTION(BlueprintPure)
+	virtual FVector2D GetLastMovementInput() { return FVector2D::ZeroVector; }
+
+	UFUNCTION(BlueprintPure)
+	virtual FVector GetLastMovementWorldDirection() { return FVector::ZeroVector; }
 	
 public:
 	void GiveDefaultAbilities();
@@ -49,4 +62,7 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere, Category = "AnimManager")
 	TObjectPtr<UNBAnimManagerComponent> AnimManagerComponent;
+
+	UPROPERTY(VisibleAnywhere, Category = "CharacterState")
+	TObjectPtr<UNBCharacterStateComponent> CharacterStateComponent;
 };

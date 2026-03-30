@@ -6,6 +6,7 @@
 #include "AbilitySystemComponent.h"
 #include "GameplayAbilitySpec.h"
 #include "Component/NBAnimManagerComponent.h"
+#include "Component/NBCharacterStateComponent.h"
 #include "Config/NBCharacterSettings.h"
 #include "Data/NBAnimationData.h"
 #include "FunctionLibrary/NBAssetManagerFunctionLibrary.h"
@@ -19,6 +20,7 @@ ANBBaseCharacter::ANBBaseCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	
 	AnimManagerComponent = CreateDefaultSubobject<UNBAnimManagerComponent>("AnimManagerComponent");
+	CharacterStateComponent = CreateDefaultSubobject<UNBCharacterStateComponent>("CharacterStateComponent");
 }
 
 // Called when the game starts or when spawned

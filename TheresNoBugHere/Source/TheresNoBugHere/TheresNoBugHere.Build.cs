@@ -18,7 +18,8 @@ public class TheresNoBugHere : ModuleRules
 			"GameplayTags", 
 			"AIModule",
 			"GameplayAbilities",
-			"GameplayTasks"
+			"GameplayTasks", 
+			"AnimGraphRuntime"
 		});
 	}
 }

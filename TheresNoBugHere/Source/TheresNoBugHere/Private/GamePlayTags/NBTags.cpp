@@ -3,6 +3,16 @@
 
 namespace NB_Tags
 {
+	namespace State
+	{
+		UE_DEFINE_GAMEPLAY_TAG(BlockInput,   "NB_Tags.State.BlockInput");
+		UE_DEFINE_GAMEPLAY_TAG(BlockMove,    "NB_Tags.State.BlockMove");
+		UE_DEFINE_GAMEPLAY_TAG(BlockAbility, "NB_Tags.State.BlockAbility");
+		UE_DEFINE_GAMEPLAY_TAG(Invincible,   "NB_Tags.State.Invincible");
+		UE_DEFINE_GAMEPLAY_TAG(Stagger,      "NB_Tags.State.Stagger");
+		UE_DEFINE_GAMEPLAY_TAG(Dead,         "NB_Tags.State.Dead");
+	}
+
 	namespace Abilities
 	{
 		UE_DEFINE_GAMEPLAY_TAG(DefaultAttack, "NB_Tags.Abilities.DefaultAttack");

@@ -18,24 +18,19 @@ UNBAnimManagerComponent::UNBAnimManagerComponent()
 	// ...
 }
 
-
-// Called when the game starts
-void UNBAnimManagerComponent::BeginPlay()
+UAnimMontage* UNBAnimManagerComponent::GetMontageByTag(const FGameplayTag& InTag)
 {
-	Super::BeginPlay();
+	FNBRuntimeAnimSetData* AnimSetData = AnimSetVersion.Find(InTag);
+	if (!AnimSetData)
+	{
+		UNBDebugMsgManagerSubSystem::PrintDebugMsg(this, 
+			FString::Format(TEXT("UNBAnimManagerComponent::GetMontageByTag, Can't Find Aseet By Tag:{0}!"), {InTag.ToString()}), 
+			ENBMsgType::Error);
 
-	// ...
-	
-}
+		return nullptr;
+	}
 
-
-// Called every frame
-void UNBAnimManagerComponent::TickComponent(float DeltaTime, ELevelTick TickType,
-                                            FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
+	return AnimSetData->GetAnimAsset<UAnimMontage>();
 }
 
 void UNBAnimManagerComponent::InitAnimSetByTable(UDataTable* AnimSetTable)

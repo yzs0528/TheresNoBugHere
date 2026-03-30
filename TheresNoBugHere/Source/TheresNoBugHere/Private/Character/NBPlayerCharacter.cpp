@@ -4,6 +4,8 @@
 #include "Character/NBPlayerCharacter.h"
 
 #include "AbilitySystemComponent.h"
+#include "FunctionLibrary/NBGamePlayFunctionLibrary.h"
+#include "System/NBPlayerController.h"
 #include "System/NBPlayerState.h"
 
 
@@ -12,6 +14,26 @@ ANBPlayerCharacter::ANBPlayerCharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+}
+
+FVector2D ANBPlayerCharacter::GetLastMovementInput()
+{
+	if (const ANBPlayerController* NBPlayerController = Cast<ANBPlayerController>(GetController()))
+	{
+		return NBPlayerController->LastMovementInput;
+	}
+
+	return FVector2D::ZeroVector;
+}
+
+FVector ANBPlayerCharacter::GetLastMovementWorldDirection()
+{
+	if (const ANBPlayerController* NBPlayerController = Cast<ANBPlayerController>(GetController()))
+	{
+		return NBPlayerController->LastMovementWorldDirection;
+	}
+
+	return FVector::ZeroVector;
 }
 
 // Called when the game starts or when spawned

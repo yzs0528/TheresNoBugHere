@@ -24,9 +24,22 @@ public:
 
 public:
 	void ActiveAbility(const FGameplayTag& AbilityTag) const;
+
+	/** 检查当前 Pawn 是否处于阻断所有输入的状态 */
+	UFUNCTION(BlueprintPure, Category = "CharacterState")
+	bool IsInputBlocked() const;
+
+	/** 检查当前 Pawn 是否处于阻断移动输入的状态 */
+	UFUNCTION(BlueprintPure, Category = "CharacterState")
+	bool IsMoveBlocked() const;
+
+	/** 检查当前 Pawn 是否处于阻断技能输入的状态 */
+	UFUNCTION(BlueprintPure, Category = "CharacterState")
+	bool IsAbilityBlocked() const;
 	
 public:
 	void Move(const FInputActionValue& Value);
+	void MoveEnd(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 
 	void Action_DefaultAttack(const FInputActionValue& Value);
@@ -55,4 +68,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input|InputAction|Ability")
 	TObjectPtr<UInputAction> InputAction_Ability02;
+
+public:
+	bool bHasMovementInput = false;
+	FVector2D LastMovementInput = FVector2D::ZeroVector;
+	FVector LastMovementWorldDirection = FVector::ZeroVector;
 };

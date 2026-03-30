@@ -23,7 +23,7 @@ FText UNBAnimGraphNode_SequencePlayer::GetNodeTitle(ENodeTitleType::Type TitleTy
 
 FString UNBAnimGraphNode_SequencePlayer::GetNodeCategory() const
 {
-	return TEXT("NBAnimSet");
+	return TEXT("AnimSet");
 }
 
 void UNBAnimGraphNode_SequencePlayer::GetNodeContextMenuActions(UToolMenu* Menu,

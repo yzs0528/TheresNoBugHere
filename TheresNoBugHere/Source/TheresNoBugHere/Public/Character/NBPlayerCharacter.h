@@ -15,6 +15,9 @@ public:
 	// Sets default values for this character's properties
 	ANBPlayerCharacter();
 
+	virtual FVector2D GetLastMovementInput() override;
+	virtual FVector GetLastMovementWorldDirection() override;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

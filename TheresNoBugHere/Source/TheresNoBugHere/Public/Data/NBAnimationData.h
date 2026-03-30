@@ -16,7 +16,7 @@ struct FNBAnimSetData : public FTableRowBase
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NB_Tags.Animation")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (Categories = "NB_Tags.Animation"))
 	FGameplayTag AnimTag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -43,6 +43,11 @@ public:
 		
 		AnimAsset = InAnimAsset;
 		Version++;
+	}
+
+	bool IsValid() const
+	{
+		return Version > 0 && AnimAsset->IsValidLowLevelFast();
 	}
 	
 	int32 GetVersion() const { return Version; }
@@ -100,4 +105,10 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	bool bIsMoving = false;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	float MovingVelocitySize = 0.f;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	float MovingDirectionAngle = 0.f;
 };

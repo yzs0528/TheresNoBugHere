@@ -6,7 +6,10 @@
 #include "AbilitySystemComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "FunctionLibrary/NBGamePlayFunctionLibrary.h"
 #include "GamePlayTags/NBTags.h"
+#include "Character/NBBaseCharacter.h"
+#include "Component/NBCharacterStateComponent.h"
 #include "System/NBPlayerCameraManager.h"
 
 void ANBPlayerController::OnPossess(APawn* InPawn)
@@ -35,6 +38,7 @@ void ANBPlayerController::SetupInputComponent()
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EnhancedInputComponent->BindAction(InputAction_Move, ETriggerEvent::Triggered, this, &ANBPlayerController::Move);
+		EnhancedInputComponent->BindAction(InputAction_Move, ETriggerEvent::Completed, this, &ANBPlayerController::MoveEnd);
 		EnhancedInputComponent->BindAction(InputAction_Look, ETriggerEvent::Triggered, this, &ANBPlayerController::Look);
 		
 		EnhancedInputComponent->BindAction(InputAction_DefaultAttack, ETriggerEvent::Started, this, &ANBPlayerController::Action_DefaultAttack);
@@ -53,24 +57,63 @@ void ANBPlayerController::ActiveAbility(const FGameplayTag& AbilityTag) const
 	}
 }
 
+bool ANBPlayerController::IsInputBlocked() const
+{
+	if (const ANBBaseCharacter* ControlledCharacter = Cast<ANBBaseCharacter>(GetPawn()))
+	{
+		if (UNBCharacterStateComponent* StateComp = ControlledCharacter->GetCharacterStateComponent())
+		{
+			return StateComp->HasStateTag(NB_Tags::State::BlockInput);
+		}
+	}
+	return false;
+}
+
+bool ANBPlayerController::IsMoveBlocked() const
+{
+	if (const ANBBaseCharacter* ControlledCharacter = Cast<ANBBaseCharacter>(GetPawn()))
+	{
+		if (UNBCharacterStateComponent* StateComp = ControlledCharacter->GetCharacterStateComponent())
+		{
+			return StateComp->HasStateTag(NB_Tags::State::BlockInput)
+				|| StateComp->HasStateTag(NB_Tags::State::BlockMove);
+		}
+	}
+	return false;
+}
+
+bool ANBPlayerController::IsAbilityBlocked() const
+{
+	if (const ANBBaseCharacter* ControlledCharacter = Cast<ANBBaseCharacter>(GetPawn()))
+	{
+		if (UNBCharacterStateComponent* StateComp = ControlledCharacter->GetCharacterStateComponent())
+		{
+			return StateComp->HasStateTag(NB_Tags::State::BlockInput)
+				|| StateComp->HasStateTag(NB_Tags::State::BlockAbility);
+		}
+	}
+	return false;
+}
+
 void ANBPlayerController::Move(const FInputActionValue& Value)
 {
 	if (AcknowledgedPawn)
 	{
-		FVector2D InputDirection = Value.Get<FVector2D>();
-		
-		const FRotator Rotation = GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
+		LastMovementInput = Value.Get<FVector2D>();
+		if (IsMoveBlocked())
+		{
+			return;
+		}
 
-		// get forward vector
-		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-	
-		// get right vector 
-		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-		
-		AcknowledgedPawn->AddMovementInput(ForwardDirection, InputDirection.Y);
-		AcknowledgedPawn->AddMovementInput(RightDirection, InputDirection.X);
+		bHasMovementInput = true;
+		LastMovementWorldDirection = UNBGamePlayFunctionLibrary::InputDirectionToWorldDirection(LastMovementInput, GetControlRotation());
+		AcknowledgedPawn->AddMovementInput(LastMovementWorldDirection, 1.f);
 	}
+}
+
+void ANBPlayerController::MoveEnd(const FInputActionValue& Value)
+{
+	bHasMovementInput = false;
 }
 
 void ANBPlayerController::Look(const FInputActionValue& Value)
@@ -80,20 +123,32 @@ void ANBPlayerController::Look(const FInputActionValue& Value)
 
 void ANBPlayerController::Action_DefaultAttack(const FInputActionValue& Value)
 {
-	ActiveAbility(NB_Tags::Abilities::DefaultAttack);
+	if (!IsAbilityBlocked())
+	{
+		ActiveAbility(NB_Tags::Abilities::DefaultAttack);
+	}
 }
 
 void ANBPlayerController::Action_Dash(const FInputActionValue& Value)
 {
-	ActiveAbility(NB_Tags::Abilities::Dash);
+	if (!IsAbilityBlocked())
+	{
+		ActiveAbility(NB_Tags::Abilities::Dash);
+	}
 }
 
 void ANBPlayerController::Action_Ability01(const FInputActionValue& Value)
 {
-	ActiveAbility(NB_Tags::Abilities::Ability01);
+	if (!IsAbilityBlocked())
+	{
+		ActiveAbility(NB_Tags::Abilities::Ability01);
+	}
 }
 
 void ANBPlayerController::Action_Ability02(const FInputActionValue& Value)
 {
-	ActiveAbility(NB_Tags::Abilities::Ability02);
+	if (!IsAbilityBlocked())
+	{
+		ActiveAbility(NB_Tags::Abilities::Ability02);
+	}
 }
